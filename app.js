@@ -3,7 +3,8 @@ const express = require("express");
 const bodyParser  = require("body-parser");
 const ejs = require("ejs");
 const mongoose = require("mongoose");
-const encrypt = require("mongoose-encryption")
+const encrypt = require("mongoose-encryption");
+const md5 = require("md5");
 const app = express();
 
 app.use(express.static("public"));
@@ -11,6 +12,8 @@ app.set('view engine','ejs');
 app.use(bodyParser.urlencoded({
     extended:true
 }));
+
+// console.log(md5("124"));
 mongoose.connect("mongodb://127.0.0.1:27017/UsersDB")
 .then(()=>{
     console.log("Database connect successfull");
@@ -45,7 +48,7 @@ app.get("/login",function(req,res){
 app.post("/register",function(req,res){
     const newUser = new User({
         email: req.body.username,
-        password: req.body.password
+        password:  md5(req.body.password)
     });
     newUser.save().then(()=>{
         res.render("secrets");
@@ -56,7 +59,7 @@ app.post("/register",function(req,res){
 
 app.post("/login",function(req,res){
     const username = req.body.username;
-    const password = req.body.password;
+    const password = md5(req.body.password);
     User.findOne({email: username}).then(function(foundUser){
         if(foundUser.password === password){
             res.render("secrets");
