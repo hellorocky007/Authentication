@@ -1,16 +1,26 @@
-<%- include('partials/header') %>
-
-
-<div class="jumbotron centered">
-  <div class="container">
-    <i class="fas fa-key fa-6x"></i>
-    <h1 class="display-3">Secrets</h1>
-    <p class="lead">Don't keep your secrets, share them anonymously!</p>
-    <hr>
-    <a class="btn btn-light btn-lg" href="/register" role="button">Register</a>
-    <a class="btn btn-dark btn-lg" href="/login" role="button">Login</a>
-
+<%- include('partials1/header') %>
+<div class="container">
+  <div class="main-content">
+    <h1>Rising Above Adversity: Your Path to Success</h1> 
+  <p><%= paragraph %> </p>
   </div>
+<div class="header-conatiner">
+<div class="post">
+    <% newparagraph.forEach(function(blog){ %>
+      <div class="all-inone">
+      <div class="title">
+        <h1><%= blog.title %> </h1>
+      </div>
+      <div class="content-post"><p>
+        <%= blog.content %>
+        <a href="/posts/<%= blog._id %>"></a>
+      </p>
+    </div>
+  </div>
+     <% }) %>
+     </div>
+<!-- <%for(var i=0;i<newparagraph.length;i++){ %>
+    <% console.log(newparagraph[i].title); %>
+<% }; %> -->
 </div>
-
-<%- include('partials/footer') %>
+<%- include('partials1/footer') %>

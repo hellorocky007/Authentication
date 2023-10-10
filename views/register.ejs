@@ -1,41 +1,28 @@
 <%- include('partials/header') %>
-<div class="container mt-5">
-  <h1>Register</h1>
-
-  <div class="row">
-    <div class="col-sm-8">
-      <div class="card">
-        <div class="card-body">
-
+<header>
+  <h2>Daily Blogs</h2>
+</header>
+<div class="container">
+<div class="sign-box">
+  <h1>SignUp</h1>
           <!-- Makes POST request to /register route -->
           <form action="/register" method="POST">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" class="form-control" name="username">
-            </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" name="password">
-            </div>
-            <button type="submit" class="btn btn-dark">Register</button>
+              <input type ="email" placeholder="Email" name="username"required>
+            <input type ="password" placeholder="Password"  name="password" required>
+            <button type="submit" class="signbtn">Signup</button>
           </form>
-
+          <div class="sign-bottom">
+            <p>By clicking the Sign Up button, you agree to our
+            <a href="#">Terms and Condition </a>and<a href="#">Policy Privacy</a>
+            </p>
+            <p class="para-2">Already have an Account? <a href="login">Login here</a></p>
+        <div class="bottom-container1">
+          <button class="g-btn"><a href="/auth/google" role="button">
+            SignUp by <i class="fa-brands fa-google"></i></a></button>
+            <button class="f-btn">SignUp by <i class="fa-brands fa-facebook-f"></i></button>
+                <button class="git-btn">SignUp by <i class="fa-brands fa-github"></i></button>
         </div>
-      </div>
-    </div>
-
-    <div class="col-sm-4">
-      <div class="card social-block">
-        <div class="card-body">
-          <a class="btn btn-block" href="/auth/google" role="button">
-            <i class="fab fa-google"></i>
-            Sign Up with Google
-          </a>
-        </div>
-      </div>
-    </div>
-
+          </div>
   </div>
 </div>
-
-<%- include('partials/header') %>
+<%- include('partials/footer') %>
